@@ -1,0 +1,104 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+
+type Guide = {
+  url: string;
+  frontmatter: {
+    title: string;
+    category: string;
+  };
+};
+
+const pageTitle = "Guides";
+
+// Load all .md files in the guides folder
+const allGuides: Guide[] = Object.values(
+  import.meta.glob<Guide>("./guides/*.md", { eager: true }),
+);
+
+// group by category using frontmatter
+function groupByCategory(guides: Guide[]): Record<string, Guide[]> {
+  return guides.reduce((acc: Record<string, Guide[]>, guide) => {
+    const category = guide.frontmatter.category || "Uncategorized";
+    if (!acc[category]) acc[category] = [];
+    acc[category].push(guide);
+    return acc;
+  }, {});
+}
+
+const categorizedPages = groupByCategory(allGuides);
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <div class="rss-container">
+    <h1>{pageTitle}</h1><a
+      href="/guides/rss.xml"
+      aria-label="Subscribe to RSS feed"
+      ><svg
+        class="rss"
+        xmlns="http://www.w3.org/2000/svg"
+        height="24"
+        viewBox="0 0 24 24"
+        width="24"
+        ><path d="M0 0h24v24H0z" fill="none"></path><circle
+          cx="6.18"
+          cy="17.82"
+          r="2.18"></circle><path
+          d="M4 4.44v2.83c7.03 0 12.73 5.7 12.73 12.73h2.83c0-8.59-6.97-15.56-15.56-15.56zm0 5.66v2.83c3.9 0 7.07 3.17 7.07 7.07h2.83c0-5.47-4.43-9.9-9.9-9.9z"
+        ></path></svg
+      ></a
+    >
+  </div>
+
+  <input
+    type="text"
+    id="guide-search"
+    placeholder="Search guides..."
+    style="margin-bottom: 1rem; width: 100%; padding: 0.5rem; font-size: 1rem; font-family: var(--accent-font); background: #1a1a1a; color: var(--white); border: 1px solid #444; border-radius: 6px;"
+  />
+
+  {
+    Object.entries(categorizedPages).map(
+      ([category, guides]: [string, Guide[]]) => {
+        return (
+          <section class="guide-category">
+            <h3>{category}</h3>
+            <ul>
+              {guides.map((guide) => (
+                <li class="guide-item">
+                  <a style="color: var(--accent-purple)" href={guide.url}>
+                    {guide.frontmatter.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+          </section>
+        );
+      },
+    )
+  }
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const input = document.getElementById("guide-search");
+      const items = document.querySelectorAll(".guide-item");
+
+      input.addEventListener("input", () => {
+        const query = input.value.toLowerCase();
+
+        items.forEach((item) => {
+          const text = item.textContent.toLowerCase();
+          item.style.display = text.includes(query) ? "list-item" : "none";
+        });
+
+        // Hide entire category sections if all children are hidden
+        document.querySelectorAll(".guide-category").forEach((section) => {
+          const hasVisible = Array.from(
+            section.querySelectorAll(".guide-item"),
+          ).some((li) => li.style.display !== "none");
+
+          section.style.display = hasVisible ? "block" : "none";
+        });
+      });
+    });
+  </script>
+</BaseLayout>

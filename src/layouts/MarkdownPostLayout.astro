@@ -1,0 +1,227 @@
+---
+import type { MarkdownHeading } from "astro";
+import BaseLayout from "./BaseLayout.astro";
+
+export interface Props {
+  title: string;
+  frontmatter: {
+    title: string;
+    pubDate?: string;
+    tags: string[];
+  };
+  headings: MarkdownHeading[];
+}
+
+const { frontmatter, title, headings } = Astro.props;
+
+// Define TOCNode with nested children
+interface TOCNode extends MarkdownHeading {
+  children: TOCNode[];
+}
+
+// Function to build nested TOC tree
+function buildTOCTree(headings: MarkdownHeading[]): TOCNode[] {
+  const root: TOCNode = {
+    depth: 0,
+    slug: "",
+    text: "",
+    children: [],
+  };
+  const stack: TOCNode[] = [root];
+
+  for (const h of headings) {
+    const node: TOCNode = { ...h, children: [] };
+    while (stack.length > h.depth - 1) {
+      stack.pop();
+    }
+    stack[stack.length - 1].children.push(node);
+    stack.push(node);
+  }
+
+  return root.children;
+}
+
+const tocTree = buildTOCTree(headings);
+
+// Format date for publishing
+function formatDate(date: string | Date | undefined) {
+  if (!date) return "";
+
+  const dateObj =
+    typeof date === "string" ? new Date(date + "T12:00:00Z") : date;
+
+  return new Intl.DateTimeFormat("en-US", {
+    month: "long",
+    year: "numeric",
+  }).format(dateObj);
+}
+---
+
+<BaseLayout pageTitle={frontmatter.title} showRightSidebar={true}>
+  <h1>{frontmatter.title}</h1>
+
+  <Fragment slot="metadata">
+    {
+      frontmatter.pubDate && (
+        <>
+          <div class="published section odd">
+            <div class="title">
+              <p>
+                <strong>Published</strong>
+              </p>
+            </div>
+            <p>{formatDate(frontmatter.pubDate.toString().slice(0, 10))}</p>
+          </div>
+          <hr />
+        </>
+      )
+    }
+
+    <div class="topics section even">
+      <div class="title">
+        <p><strong>Topics</strong></p>
+      </div>
+      <div class="tags">
+        {
+          frontmatter.tags.map((tag) => (
+            <p class="tag">
+              <a href={`/posts/tags/${tag}`}>{tag}</a>
+            </p>
+          ))
+        }
+      </div>
+    </div>
+    <hr />
+
+    {
+      tocTree.length > 0 && (
+        <div class="toc section odd">
+          <div class="title">
+            <p>
+              <strong>Table of Contents</strong>
+            </p>
+          </div>
+          <ul class="toc">
+            {tocTree.map((node) => (
+              <li>
+                <a href={`#${node.slug}`}>{node.text}</a>
+                {node.children.length > 0 && (
+                  <ul>
+                    {node.children.map((child) => (
+                      <li>
+                        <a href={`#${child.slug}`}>{child.text}</a>
+                        {child.children.length > 0 && (
+                          <ul>
+                            {child.children.map((grandchild) => (
+                              <li>
+                                <a href={`#${grandchild.slug}`}>
+                                  {grandchild.text}
+                                </a>
+                              </li>
+                            ))}
+                          </ul>
+                        )}
+                      </li>
+                    ))}
+                  </ul>
+                )}
+              </li>
+            ))}
+          </ul>
+        </div>
+      )
+    }
+  </Fragment>
+
+  <div class="article">
+    <slot />
+  </div>
+  <!-- <button id="backToTop" aria-label="Back to top">↑ Top</button> -->
+  <style>
+    :global(.article p a) {
+      color: var(--accent-purple);
+    }
+
+    /* callouts */
+
+    :global(blockquote:has(strong)) {
+      border-left: 5px solid var(--accent-purple);
+      background-color: #1a1a1a;
+      padding: 0.5em;
+      margin-left: 0px;
+    }
+
+    :global(blockquote:has(strong) p) {
+      margin: 5px;
+      color: var(--white);
+      font-size: smaller;
+    }
+
+    :global(.demo) {
+      border: 1px dotted var(--white);
+      padding: 15px;
+    }
+
+    :global(ol + p > img) {
+      padding-left: 40px;
+    }
+    #backToTop {
+      position: fixed;
+      bottom: 30px;
+      right: 30px;
+      padding: 10px 15px;
+      font-size: 1rem;
+      font-family: sans-serif;
+      background-color: var(--black);
+      color: var(--accent-green);
+      border: 2px solid var(--accent-purple);
+      border-radius: 8px;
+      cursor: pointer;
+      opacity: 0;
+      visibility: hidden;
+      transition:
+        opacity 0.4s ease,
+        visibility 0.4s ease;
+      z-index: 1001;
+    }
+
+    #backToTop.show {
+      opacity: 1;
+      visibility: visible;
+    }
+
+    #backToTop:hover {
+      background-color: var(--accent-green);
+      color: #000;
+    }
+
+    #backToTop:focus {
+      outline: 2px solid var(--accent-purple);
+      outline-offset: 3px;
+    }
+
+    /* Optional alternate position */
+    #backToTop.bottom-left {
+      right: auto;
+      left: 30px;
+    }
+  </style>
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>
+</BaseLayout>

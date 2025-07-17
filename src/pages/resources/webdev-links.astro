@@ -1,0 +1,122 @@
+---
+import { links } from "../../pages/data/diy-links.js";
+import BaseLayout from "../../layouts/BaseLayout.astro";
+
+const pageTitle = "DIY Web Development Directory";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p><strong>Filter by...</strong></p>
+  <div class="filters">
+    <button class="accessibility">Accessibility</button>
+    <button class="archival">Archival</button>
+    <button class="domains">Domains</button>
+    <button class="coding">Coding</button>
+    <button class="flair">Flair</button>
+    <button class="fonts">Fonts</button>
+    <button class="graphics">Graphics</button>
+    <button class="hosting">Hosting</button>
+    <button class="html-css">HTML/CSS</button>
+    <button class="layouts">Layouts</button>
+    <button class="metrics">Metrics</button>
+    <button class="optimization">Optimization</button>
+    <button class="sitebuilders">Sitebuilders</button>
+    <button class="social">Social</button>
+  </div><br />
+
+  {
+    Object.entries(links).map(([sectionTitle, items]) => {
+      const safeId = sectionTitle.toLowerCase().replace(/\W+/g, "-");
+      return (
+        <section id={safeId}>
+          <h2>{sectionTitle}</h2>
+          <ul role="list">
+            {items.map((link) => (
+              <li>
+                <a href={link.url} rel="noopener noreferrer" target="_blank">
+                  {link.name}
+                </a>
+                <p>{link.description}</p>
+              </li>
+            ))}
+          </ul>
+        </section>
+      );
+    })
+  }
+
+  <style>
+    ul[role="list"] li {
+      padding-bottom: 20px;
+    }
+    .filters {
+      display: flex;
+      flex-wrap: wrap;
+      gap: 0.5rem;
+      width: 100%;
+      max-width: 100%;
+      box-sizing: border-box;
+      margin-bottom: 2rem;
+    }
+
+    .filters button {
+      white-space: nowrap;
+      overflow: hidden;
+      text-overflow: ellipsis;
+      flex-shrink: 0;
+      max-width: 100%;
+      min-width: calc(12% - 0.5rem); /* ensures better wrapping */
+      background: var(--black);
+      color: var(--white);
+      border: 1px solid var(--white);
+      padding: 8px;
+      border-radius: 5px;
+    }
+
+    .filters button.active {
+      background-color: var(--accent-purple);
+      color: var(--black);
+      border: 1px solid #222;
+    }
+
+    section {
+      margin-bottom: 3rem;
+    }
+  </style>
+</BaseLayout>
+
+<Fragment slot="scripts">
+  <script is:inline>
+    document.addEventListener("DOMContentLoaded", () => {
+      const buttons = document.querySelectorAll(".filters button");
+      const sections = document.querySelectorAll("section");
+
+      let activeFilter = "all"; // Track the current active filter
+
+      buttons.forEach((button) => {
+        button.addEventListener("click", () => {
+          const target = button.className.toLowerCase().replace(/\W+/g, "-");
+
+          if (button.classList.contains("active")) {
+            // If already active, remove filter
+            button.classList.remove("active");
+            activeFilter = "all";
+          } else {
+            // Set new active filter
+            buttons.forEach((btn) => btn.classList.remove("active"));
+            button.classList.add("active");
+            activeFilter = target;
+          }
+
+          // Show/hide sections based on the current filter
+          sections.forEach((section) => {
+            const id = section.getAttribute("id").toLowerCase();
+            section.style.display =
+              activeFilter === "all" || id === activeFilter ? "block" : "none";
+          });
+        });
+      });
+    });
+  </script>
+</Fragment>
