@@ -13,7 +13,7 @@ cd ../dist-deploy
 echo "📦 Committing and pushing to dist branch..."
 git add .
 git commit -m "Deploy from source commit $(git --git-dir=../sadgrl.online/.git rev-parse --short HEAD)"
-# git push origin dist
+git push origin dist
 
 cd ../sadgrl.online
 echo "✅ Deploy complete!"
