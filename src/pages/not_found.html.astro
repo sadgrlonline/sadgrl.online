@@ -1,0 +1,131 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+const pageTitle = "404: Page not found";
+const redirects = {
+  "sadgrl/": "/",
+  "sadgrl/links/": "/links/",
+  "sadgrl/learn/": "/guides/",
+  "sadgrl/learn/sections/html-and-css/": "/resources/",
+  "sadgrl/learn/sections/snippets/": "/resources/",
+  "sadgrl/learn/articles/html-skeleton/": "/guides/the-html-skeleton",
+  "sadgrl/learn/articles/using-bg-images/": "/guides/background-images",
+  "sadgrl/learn/articles/creating-lists/": "/guides/lists",
+  "sadgrl/learn/articles/text-columns/": "/guides/text-columns",
+  "sadgrl/learn/articles/custom-fonts/": "/guides/custom-fonts",
+  "sadgrl/learn/articles/static-rss/": "/guides/rss/",
+  "sadgrl/learn/articles/using-flexbox/": "/guides/flexbox",
+  "sadgrl/learn/articles/including-css/": "/guides/including-css",
+  "sadgrl/learn/articles/absolute-relative-links/": "/guides/links",
+  "sadgrl/learn/articles/root-variables/": "/guides/css-variables",
+  "sadgrl/learn/articles/meta-thumbnail/": "/guides/meta-thumbnail",
+  "sadgrl/learn/articles/responsive-website/": "/guides/responsive-website/",
+  "sadgrl/learn/articles/website-redirect/": "/guides/page-redirect",
+  "sadgrl/learn/articles/mastering-position-absolute/":
+    "/guides/position-absolute",
+  "sadgrl/learn/articles/beginners-guide-neocities/": "/guides/neocities",
+  "sadgrl/learn/articles/last-update-visitors/": "/guides/neocities-stats",
+  "sadgrl/learn/articles/404-page/": "/guides/custom-404",
+  "sadgrl/learn/articles/neocities-backup/": "/guides/neocities-backup",
+  "sadgrl/learn/articles/tweaking-lyt-maker/": "/guides/layout-maker",
+  "sadgrl/learn/articles/snippet-trouble/": "/guides/snippet-trouble",
+  "sadgrl/cyberspace/surf-the-web/": "/guides/surf",
+  "sadgrl/cyberspace/internet-manifesto/": "/posts/internet-manifesto",
+  "sadgrl/cyberspace/block-ads/": "/guides/block-ads",
+  "sadgrl/cyberspace/bypass-paywalls/": "/guides/paywalls",
+  "sadgrl/cyberspace/archive-the-web/": "/guides/archive",
+  "sadgrl/projects/layout-builder/":
+    "https://codepen.io/sadness97/full/XJbLxNj",
+  "sadgrl/projects/88x31-button-maker/":
+    "https://codepen.io/sadness97/full/YPXMmve",
+  "sadgrl/webmastery": "/resources/",
+  "sadgrl/webmastery/webmaster-links/": "/resources/webdev-links",
+  "sadgrl/webmastery/downloads/tiledbgs/":
+    "https://codepen.io/sadness97/full/dPoEqNN",
+  "sadgrl/webmastery/downloads/fonts/":
+    "https://codepen.io/sadness97/full/YPXbOEx",
+  "/sadgrl/webmastery/layouts/": "https://codepen.io/sadness97/full/XJbLxZM",
+};
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+
+  <!-- 🔁 Redirect logic that runs ONLY in browser -->
+  <script is:inline>
+    (function () {
+      const redirects = {
+        "sadgrl/": "/",
+        "sadgrl/reading/": "/reading/",
+        "sadgrl/links/": "/links/",
+        "sadgrl/learn/": "/guides/",
+        "sadgrl/learn/sections/html-and-css": "/resources/",
+        "sadgrl/learn/sections/snippets": "/resources/",
+        "sadgrl/learn/articles/html-skeleton": "/guides/the-html-skeleton",
+        "sadgrl/learn/articles/using-bg-images": "/guides/background-images",
+        "sadgrl/learn/articles/creating-lists": "/guides/lists",
+        "sadgrl/learn/articles/text-columns": "/guides/text-columns",
+        "sadgrl/learn/articles/custom-fonts": "/guides/custom-fonts",
+        "sadgrl/learn/articles/static-rss": "/guides/rss/",
+        "sadgrl/learn/articles/using-flexbox": "/guides/flexbox",
+        "sadgrl/learn/articles/including-css": "/guides/including-css",
+        "sadgrl/learn/articles/absolute-relative-links": "/guides/links",
+        "sadgrl/learn/articles/root-variables": "/guides/css-variables",
+        "sadgrl/learn/articles/meta-thumbnail": "/guides/meta-thumbnail",
+        "sadgrl/learn/articles/responsive-website":
+          "/guides/responsive-website",
+        "sadgrl/learn/articles/website-redirect": "/guides/page-redirect",
+        "sadgrl/learn/articles/mastering-position-absolute":
+          "/guides/position-absolute",
+        "sadgrl/learn/articles/beginners-guide-neocities": "/guides/neocities",
+        "sadgrl/learn/articles/last-update-visitors": "/guides/neocities-stats",
+        "sadgrl/learn/articles/404-page": "/guides/custom-404",
+        "sadgrl/learn/articles/neocities-backup": "/guides/neocities-backup",
+        "sadgrl/learn/articles/tweaking-lyt-maker": "/guides/layout-maker",
+        "sadgrl/learn/articles/snippet-trouble": "/guides/snippet-trouble",
+        "sadgrl/cyberspace/surf-the-web": "/guides/surf",
+        "sadgrl/cyberspace/internet-manifesto": "/posts/internet-manifesto",
+        "sadgrl/cyberspace/block-ads": "/guides/block-ads",
+        "sadgrl/cyberspace/bypass-paywalls": "/guides/paywalls",
+        "sadgrl/cyberspace/archive-the-web": "/guides/archive",
+        "sadgrl/projects/layout-builder":
+          "https://codepen.io/sadness97/full/XJbLxNj",
+        "sadgrl/projects/88x31-button-maker":
+          "https://codepen.io/sadness97/full/YPXMmve",
+        "sadgrl/webmastery": "/resources/",
+        "sadgrl/webmastery/webmaster-links": "/resources/webdev-links",
+        "sadgrl/webmastery/downloads/tiledbgs":
+          "https://codepen.io/sadness97/full/dPoEqNN",
+        "sadgrl/webmastery/downloads/fonts":
+          "https://codepen.io/sadness97/full/YPXbOEx",
+        "/sadgrl/webmastery/layouts/":
+          "https://codepen.io/sadness97/full/XJbLxZM",
+      };
+
+      const path = window.location.pathname.replace(/^\/|\/$/g, "") + "/";
+      if (redirects[path]) {
+        window.location.replace(redirects[path]);
+      }
+    })();
+  </script>
+
+  <p>The page you're looking for no longer exists at this URL.</p>
+  <p>
+    During the redesign, a lot of pages were moved, but some pages were not
+    migrated. If you're sure you can't find what you're looking for around here,
+    check the Github archives of the last two iterations of this site.
+  </p>
+  <ul>
+    <li>
+      <a
+        href="https://sadgrlonline.github.io/archived-sadgrl.online/"
+        target="_blank">sadgrl.online</a
+      >
+    </li>
+    <li>
+      <a
+        href="https://sadgrlonline.github.io/archived-goblin-heart.net/"
+        target="_blank">goblin-heart.net</a
+      >
+    </li>
+  </ul>
+</BaseLayout>

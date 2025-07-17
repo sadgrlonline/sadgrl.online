@@ -1,0 +1,31 @@
+---
+import BaseLayout from "../layouts/BaseLayout.astro";
+import { links } from "../pages/data/links.js";
+
+const pageTitle = "Links";
+---
+
+<BaseLayout pageTitle={pageTitle}>
+  <h1>{pageTitle}</h1>
+  <p>
+    See also: the <a href="/resources/webdev-links/">web dev link directory</a>.
+  </p>
+
+  {
+    Object.entries(links).map(([sectionTitle, items]) => (
+      <section>
+        <h2>{sectionTitle}</h2>
+        <ul role="list">
+          {items.map((link) => (
+            <li>
+              <a href={link.url} rel="noopener noreferrer" target="_blank">
+                {link.name}
+              </a>
+              <p>{link.description}</p>
+            </li>
+          ))}
+        </ul>
+      </section>
+    ))
+  }
+</BaseLayout>
