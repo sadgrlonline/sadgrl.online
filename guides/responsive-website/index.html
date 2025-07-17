@@ -1,0 +1,60 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Making a website responsive</title><meta property="og:title" content="Making a website responsive"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Making a website responsive</h1>  <div class="article" data-astro-cid-5grsw2hi> <h2 id="a-disclaimer">A disclaimer</h2>
+<p>The complexity of a layout determines how complicated it’s going to be to make responsive. You will find it very difficult to make your site responsive if:</p>
+<ul>
+<li>The actual positioning of your layout elements (the “boxes”) are heavily reliant on images.</li>
+<li>Your layout is highly reliant on <code>position:absolute;</code>.</li>
+<li>Your layout is highly reliant on tables or iFrames.</li>
+</ul>
+<p>Below are a few different things you can do that will make your website look drastically better and more readable on small screens like phones and tablets.</p>
+<h2 id="set-the-viewport">Set the viewport</h2>
+<p>Before we get started, we want to make sure the viewport is set on each page of your website (or, at least the pages you want to make responsive).</p>
+<p>The viewport refers to the size of the screen or window the website is being viewed on. When we resize a browser window, we are changing the viewport.</p>
+<p>You’ll need to include a special viewport meta tag in your <code>&#x3C;head>&#x3C;/head></code> tags of every page. This sets the viewport, which controls how it scales on smaller devices.</p>
+<p><code>&#x3C;meta name="viewport" content="width=device-width, initial-scale=1.0"></code></p>
+<h2 id="get-familiar-with-the-inspect-tool">Get familiar with the inspect tool</h2>
+<p>Using the browser’s built-in inspect tool is a critical part of making your site responsive. I made a <a href="https://www.youtube.com/watch?v=j47-Bd1gjqM" rel="noopener noreferrer" target="_blank">video demonstrating how to use the inspect tool</a>.</p>
+<p>Making a site mobile-friendly is about investigating what happens when your website is resized, and then changing the code to make it do something different.</p>
+<p>Before you can know what to change, you have to observe your website under specific conditions. Mobile device viewports are long and narrow, unlike desktop ones.</p>
+<p>The easiest way to troubleshoot a website is to press <code>Ctrl+Shift+I</code> (<code>Cmd+Option+I</code> on Mac) to open the Inspect Tool.</p>
+<p>If the panel shows up at the bottom of the screen, you can change the options to display on the right side.</p>
+<p>Once it is on the right side, you can click and drag this panel to resize your screen.</p>
+<p><img src="https://sadhost.neocities.org/images/learn/browser-resize.gif" alt="A gif of a website being resized with text getting cut off"></p>
+<p>At some point while narrowing the above viewport, the text gets cut off. This is the type of thing we should look for, and use as our starting point.</p>
+<p>The exact pixel width of when the website ‘breaks’ or goes offscreen is known as a <strong>breakpoint</strong>. Media queries (covered below) use breakpoints to control what happens at a certain width, but we don’t need to use one of those just yet.</p>
+<h2 id="investigate-fixed-widths">Investigate fixed widths</h2>
+<p>A fixed width is any width: on any element.</p>
+<p>You only need to remove the widths larger than <code>320px</code>. Why? Because the narrowest device viewport currently in use is <code>320px</code>. If you had an image say, set to <code>500px</code>, it would run off the screen on these devices.</p>
+<p>For items larger than <code>320px</code>, we should use <code>max-width</code> instead. This will allow the image to become smaller when viewed on small screens.</p>
+<p>I’ve changed the website above’s <code>width</code> to a <code>max-width</code> and here is how the behavior changes when resized:</p>
+<p><img src="https://sadhost.neocities.org/images/learn/browser-resize2.gif" alt="A gif of a website being resized without text getting cut off"></p>
+<p>Now instead of the text getting cut off when resized, it wraps onto the next line when resized.</p>
+<h2 id="consider-using-flexbox-to-handle-sidebars">Consider using flexbox to handle sidebars</h2>
+<p>Sidebars make things difficult because they take up horizontal real estate, which phones have very little of.</p>
+<p>In the case of making existing sidebars responsive, sometimes it’s easier just to change out your HTML and CSS for something like <a href="/guides/flexbox">flexbox</a> than trying to make the original HTML work - depending on how you originally coded it.</p>
+<h2 id="use-media-queries">Use media queries</h2>
+<p>Media queries tell the website to display specific CSS when the site is viewed at a certain size.</p>
+<p>Writing media queries, again, is made much easier with the use of the inspect tool. In order to write one, you need to know the exact elements you want to change and the width at which to trigger the changes. Even if you don’t use the inspect tool, having it open can allow you to see the exact width of the page in pixels as you’re resizing it.</p>
+<p>The syntax for a media query is as follows:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">@media</span><span style="color:#EEF0F9"> only screen and (max-width: </span><span style="color:#FFD493">800</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">) {</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">  /* extra css here */</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>This query is triggered when the website is viewed at <code>800px</code>.</p>
+<p>With simple layouts, you might only need one media query. For more complex layouts, you might need to make a few for the different points at which your site needs to change.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#a-disclaimer" data-astro-cid-5grsw2hi>A disclaimer</a>  </li><li data-astro-cid-5grsw2hi> <a href="#set-the-viewport" data-astro-cid-5grsw2hi>Set the viewport</a>  </li><li data-astro-cid-5grsw2hi> <a href="#get-familiar-with-the-inspect-tool" data-astro-cid-5grsw2hi>Get familiar with the inspect tool</a>  </li><li data-astro-cid-5grsw2hi> <a href="#investigate-fixed-widths" data-astro-cid-5grsw2hi>Investigate fixed widths</a>  </li><li data-astro-cid-5grsw2hi> <a href="#consider-using-flexbox-to-handle-sidebars" data-astro-cid-5grsw2hi>Consider using flexbox to handle sidebars</a>  </li><li data-astro-cid-5grsw2hi> <a href="#use-media-queries" data-astro-cid-5grsw2hi>Use media queries</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

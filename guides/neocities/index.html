@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Absolute beginner&#39;s guide to Neocities</title><meta property="og:title" content="Absolute beginner's guide to Neocities"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Absolute beginner&#39;s guide to Neocities</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Neocities is a free static website host where you can make your own site creation to share with the world! It’s a little intimidating for first-time users, so I made this guide to hopefully make it a little easier.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>This guide assumes you have little to no experience building websites, and takes a “do now, learn later” approach.</p>
+</blockquote>
+<h2 id="creating-your-first-webpage">Creating your first webpage</h2>
+<ol>
+<li>
+<p>Go to Neocities and sign up to create an account. Once you’ve created your account, log in. The first time you log in, you’ll be taken to the <strong>Dashboard</strong>. Normally this page displays a feed of the sites you are following.</p>
+</li>
+<li>
+<p>Select the red Edit Site button at the top right of the screen. This will take you to the file manager.</p>
+</li>
+</ol>
+<p><img src="https://sadhost.neocities.org/images/learn/neocities-dashboard-view.png" alt="A screenshot of your Neocities site directory with the list button highlighted"></p>
+<ol start="3">
+<li>Select the list view highlighted on the above screenshot. It just makes things a little easier to view. This is the interface you will use to build your website. A static website is really just a basic folder that exists on a server somewhere. This Home screen is your “folder”. You can upload or create files &#x26; folders here. Although your account is new, you’ll have some files in here already.</li>
+</ol>
+<p><img src="https://sadhost.neocities.org/images/learn/neocities-dashboard-home.png" alt="A screenshot of your Neocities site directory"></p>
+<ol start="4">
+<li>
+<p>Look for a file called <code>index.html</code>. This file in your Home folder is your homepage. It is the first page people will see when viewing your website.</p>
+</li>
+<li>
+<p>Select the <strong>Edit</strong> option beside it to edit your homepage.</p>
+</li>
+<li>
+<p>In a new tab, visit my <a href="#">layout maker</a> to create a layout type that you think looks good, using the tools at the top of the page. When it looks good, click generate HTML and copy the contents from the textarea to your clipboard.</p>
+</li>
+<li>
+<p>Switch back to your tab with index.html and remove everything just between the <code>&#x3C;body>&#x3C;/body></code> tags.</p>
+</li>
+<li>
+<p>Paste the code between these tags and then select Save and then View to preview your page.</p>
+</li>
+<li>
+<p>Now you can go back to your index.html and replace the placeholder text with your own content.</p>
+</li>
+<li>
+<p>If you used my layout maker, you can find <code>&#x3C;style>&#x3C;/style></code> tags at the bottom of the code you copied. At the top, there is an area called <code>:root {}</code> where CSS variables are stored. You can change these values to customize your site.</p>
+</li>
+</ol>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>CSS works with the name of a color, (like <code>color:black;</code>) but most of the times you’ll want to use a hex code (<code>color:#000000</code>). <a href="https://www.colorzilla.com/" rel="noopener noreferrer" target="_blank">Colorzilla</a> is a free browser extension that can help you pick the hex value of a color from an existing webpage.</p>
+</blockquote>
+<ol start="10">
+<li>If you want to use the CSS on every page, it might be worth putting it in its own file and linking to it on each page. You can find <a href="/learn/guide/including-css">more information about linking stylesheets in this guide</a>.</li>
+</ol>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>If you make a change but you can’t see the change when viewing your page, press <code>Ctrl+F5</code> (<code>Cmd+Shift+R</code> on Mac) to hard refresh.</p>
+</blockquote>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>If you return to edit your <code>.css</code> file and notice that (some/all) of your code is missing, do this first: while on the page to edit your CSS, press <code>Ctrl+F5</code> (<code>Cmd+Shift+R</code> on Mac) to hard refresh. The only files which the browser caches this way are stylesheets.</p>
+</blockquote>
+<h2 id="creating-more-pages">Creating more pages</h2>
+<p>New webpages can be added by creating new <code>.html</code> files.</p>
+<p>How and where you create your files and folders will impact how your link looks when you share them.</p>
+<p>For example, if you created a file in your Home folder called about.html, that page will be available at <a href="https://yoursite.neocities.org/about.html" rel="noopener noreferrer" target="_blank">https://yoursite.neocities.org/about.html</a></p>
+<p>If you wanted your link to look like <a href="https://yoursite.neocities.org/about/" rel="noopener noreferrer" target="_blank">https://yoursite.neocities.org/about/</a> you would need to create a folder called <code>about</code> and inside of that folder, place a file called <code>index.html</code></p>
+<p>Keeping all of our pages as <code>.html</code> files in our Home folder would get messy. Putting different sections in their own folders are great ways to keep your website organized.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#creating-your-first-webpage" data-astro-cid-5grsw2hi>Creating your first webpage</a>  </li><li data-astro-cid-5grsw2hi> <a href="#creating-more-pages" data-astro-cid-5grsw2hi>Creating more pages</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

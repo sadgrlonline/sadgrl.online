@@ -1,0 +1,53 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Including CSS on your website</title><meta property="og:title" content="Including CSS on your website"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Including CSS on your website</h1>  <div class="article" data-astro-cid-5grsw2hi> <p><strong>CSS</strong> stands for <strong>C</strong>ascading <strong>S</strong>tyle <strong>S</strong>heets.</p>
+<p>The word <strong>cascading</strong> is actually quite important when it comes to working with CSS, especially when troubleshooting why things may not be working the way we might expect.</p>
+<p>For example, if we write this code:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">p</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  color: </span><span style="color:#FFD493">blue</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  color: </span><span style="color:#FFD493">purple</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>The <code>&#x3C;p>&#x3C;/p></code> elements will appear purple, because setting identical properties with different values on an element will overwrite whatever came before.</p>
+<p>Chances are, you probably already knew this - but did you know that <em>how</em> you use CSS will determine which parts of CSS overwrite others?</p>
+<p>There are three different ways you can include CSS on your website. There are a few things to know about how this impacts the behavior of the CSS.</p>
+<h2 id="in-an-external-stylesheet">In an external stylesheet</h2>
+<p>Linking to a stylesheet externally makes it easy to use the same stylesheet across multiple pages. When linking to a stylesheet externally, you do not need <code>&#x3C;style>&#x3C;/style></code> tags.</p>
+<p>This code always goes inside of your <code>&#x3C;head>&#x3C;/head></code> tags on the HTML file you’d like to include the stylesheet on.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">head</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">link</span><span style="color:#ACAFFF"> rel</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"stylesheet"</span><span style="color:#ACAFFF"> href</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"styles.css"</span><span style="color:#EEF0F9"> /></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">head</span><span style="color:#EEF0F9">></span></span></code></pre>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Not sure how to link to your stylesheet? Check out <a href="/guides/links">Using absolute and relative links</a>.</p>
+</blockquote>
+<h2 id="in-your-html-file">In your HTML file</h2>
+<p>You can put CSS between <code>&#x3C;style>&#x3C;/style></code> tags on a particular webpage. These styles will only apply to elements on that page.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">style</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#4BF3C8">  .body</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">    background-color: </span><span style="color:#FFD493">black</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">    color: </span><span style="color:#FFD493">white</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  }</span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">style</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>If you’re styling the same elements here that you’ve styled in an external stylesheet, the styles between these tags will overwrite them - on this page only. This is assuming that your <code>&#x3C;style>&#x3C;/style></code> tags appear on that webpage somewhere after the <code>&#x3C;link rel="stylesheet" href="styles.css"></code> tag.</p>
+<h2 id="inline">Inline</h2>
+<p>When CSS is written inside of your HTML tags, it’s considered <strong>inline</strong>.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> style</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"color:red; background-color:black; padding:10px;"</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  Welcome to my website!</span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>This CSS only applies to the element (in this case, a div) that you used it on. Any inline CSS will overwrite any identical styles included elsewhere in the file or external stylesheet, but only on the element you’re using the inline CSS on.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#in-an-external-stylesheet" data-astro-cid-5grsw2hi>In an external stylesheet</a>  </li><li data-astro-cid-5grsw2hi> <a href="#in-your-html-file" data-astro-cid-5grsw2hi>In your HTML file</a>  </li><li data-astro-cid-5grsw2hi> <a href="#inline" data-astro-cid-5grsw2hi>Inline</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

@@ -1,0 +1,39 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Having trouble with snippets?</title><meta property="og:title" content="Having trouble with snippets?"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Having trouble with snippets?</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Sometimes, you copy some code from a CodePen and it doesn’t work. Here are a few things you can check:</p>
+<p>First, make sure you’ve copied <strong>all</strong> the code from each section and placed it in the correct part of your project. If you’re copying from the CSS section, that code should go either:</p>
+<ul>
+<li>inside <code>&#x3C;style>&#x3C;/style></code> tags in your <code>.html</code> file, <strong>or</strong></li>
+<li>directly into a separate <code>.css</code> file (without <code>&#x3C;style></code> tags).</li>
+</ul>
+<p>The same goes for JavaScript - if you’re copying from the JS section, it belongs either:</p>
+<ul>
+<li>inside <code>&#x3C;script>&#x3C;/script></code> tags in your <code>.html</code> file, <strong>or</strong></li>
+<li>in a separate <code>.js</code> file, without the <code>&#x3C;script></code> tags.</li>
+</ul>
+<p>But with JavaScript, there’s an extra wrinkle: <strong>timing</strong> matters.</p>
+<h2 id="javascript-caveats">JavaScript caveats</h2>
+<p>JavaScript can fail silently if it runs <em>before</em> the page is fully loaded. For example, if your code tries to modify an element that doesn’t exist yet, nothing will happen.</p>
+<p>To fix this, wrap your code in a listener that waits for the page to load:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="javascript"><code><span class="line"><span style="color:#4BF3C8">document</span><span style="color:#EEF0F9">.</span><span style="color:#00DAEF">addEventListener</span><span style="color:#EEF0F9">(</span><span style="color:#FFD493">"DOMContentLoaded"</span><span style="color:#EEF0F9">, </span><span style="color:#54B9FF">function</span><span style="color:#EEF0F9"> () {</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">  // paste all of that juicy code here</span></span>
+<span class="line"><span style="color:#EEF0F9">});</span></span></code></pre>
+<p>Alternatively, if you’re using <code>&#x3C;script>&#x3C;/script></code> tags inside of your head to link to an external JS file, you can add <code>defer</code> to your script like so:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">script</span><span style="color:#ACAFFF"> src</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"../js/script.js"</span><span style="color:#ACAFFF"> defer</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">script</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>This ensures your code will execute once the page has fully loaded.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/javascript" data-astro-cid-5grsw2hi>javascript</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#javascript-caveats" data-astro-cid-5grsw2hi>JavaScript caveats</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

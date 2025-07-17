@@ -1,0 +1,58 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Using absolute and relative links</title><meta property="og:title" content="Using absolute and relative links"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Using absolute and relative links</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>One of the biggest issues that trip up new website creators are links. Creating a link to another website is relatively straightforward, but creating links to your own files - like images, stylesheets, or other pages - can be a little trickier.</p>
+<p>This guide aims to clarify things by talking about the two different ways of linking to your own content: absolute and relative links.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="bash"><code><span class="line"><span style="color:#00DAEF">sadgrl.online/</span></span>
+<span class="line"><span style="color:#00DAEF">├──</span><span style="color:#FFD493"> about/</span></span>
+<span class="line"><span style="color:#00DAEF">│</span><span style="color:#FFD493">   ├──</span><span style="color:#FFD493"> archive.html</span></span>
+<span class="line"><span style="color:#00DAEF">│</span><span style="color:#FFD493">   ├──</span><span style="color:#FFD493"> index.html</span></span>
+<span class="line"><span style="color:#00DAEF">│</span><span style="color:#FFD493">   └──</span><span style="color:#FFD493"> projects/</span></span>
+<span class="line"><span style="color:#00DAEF">│</span><span style="color:#FFD493">       └──</span><span style="color:#FFD493"> 2024.html</span></span>
+<span class="line"><span style="color:#00DAEF">├──</span><span style="color:#FFD493"> images/</span></span>
+<span class="line"><span style="color:#00DAEF">│</span><span style="color:#FFD493">   └──</span><span style="color:#FFD493"> rose.png</span></span>
+<span class="line"><span style="color:#00DAEF">└──</span><span style="color:#FFD493"> index.html</span></span></code></pre>
+<h2 id="absolute-links">Absolute links</h2>
+<p>An <strong>absolute</strong> link always starts from the root folder of your website. In our example, the root folder is <code>sadgrl.online/</code>.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">img</span><span style="color:#ACAFFF"> src</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"/images/rose.png"</span><span style="color:#ACAFFF"> alt</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"A rose"</span><span style="color:#EEF0F9"> /></span></span></code></pre>
+<p>This link will work when used from any file on your site - even deep ones like <code>/about/index.html</code> because the beginning <code>/</code> means “start from the top”.</p>
+<h2 id="relative-links">Relative links</h2>
+<p>A <strong>relative</strong> link starts from the file you’re currently editing.</p>
+<p>In this example, we’re creating a link that’s going to be on <code>about/index.html</code>.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">img</span><span style="color:#ACAFFF"> src</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"../images/rose.png"</span><span style="color:#ACAFFF"> alt</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"A rose"</span><span style="color:#EEF0F9"> /></span></span></code></pre>
+<p>Relative links are different depending on where on your website you’re linking from.</p>
+<p>Let’s break this down:</p>
+<ul>
+<li><code>..</code> means “go up one folder” from <code>/about/</code> back to the root (<code>sadgrl.online</code>).</li>
+<li>Then, once you’re in the root, go to <code>images/</code> and load <code>rose.png</code>.</li>
+</ul>
+<p>Here’s another example. Let’s try creating that same link inside of <code>about/projects/2024.html</code>.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">img</span><span style="color:#ACAFFF"> src</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"../../images/rose.png"</span><span style="color:#ACAFFF"> alt</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"A rose"</span><span style="color:#EEF0F9"> /></span></span></code></pre>
+<p>Since <code>2024.html</code> is nested one folder deeper than <code>about/</code>, we need to take two steps up (<code>../../</code>) to get to our images folder.</p>
+<p>Let’s try one more example. We’re in <code>about/index.html</code> and we want to link to <code>about/archive.html</code> which is in the same folder.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">a</span><span style="color:#ACAFFF"> href</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"archive.html"</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">a</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>Since <code>archive.html</code> is in the same folder, we don’t need to go up a level.</p>
+<p>This would take you to the same link, because <code>./</code> means “start from the current folder”.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">a</span><span style="color:#ACAFFF"> href</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"./archive.html"</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">a</span><span style="color:#EEF0F9">></span></span></code></pre>
+<h2 id="a-note-on-viewing-files-locally">A note on viewing files locally</h2>
+<p>If you download a local copy of your site and open it by double-clicking on <code>index.html</code> (instead of running it through a server), absolute links like <code>/images/rose.png</code> may not work. That’s because there’s no real “root” when viewing files directly on your computer.</p>
+<p>In contrast, relative links (like <code>../images/rose.png</code>) still work because they start from the folder of the current file.</p>
+<p>That’s why many people use tools like Live Server plugins on their code editors, which creates a local server and makes absolute links behave just like they would online.</p>
+<h2 id="which-should-i-use">Which should I use?</h2>
+<p>Absolute links are helpful when you want the link to always work, no matter where the file is.</p>
+<p>If you’re just getting started, it’s fine to stick with absolute links for simplicity. But as you build more complex sites, knowing how relative paths work can help you keep things flexible and portable.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#absolute-links" data-astro-cid-5grsw2hi>Absolute links</a>  </li><li data-astro-cid-5grsw2hi> <a href="#relative-links" data-astro-cid-5grsw2hi>Relative links</a>  </li><li data-astro-cid-5grsw2hi> <a href="#a-note-on-viewing-files-locally" data-astro-cid-5grsw2hi>A note on viewing files locally</a>  </li><li data-astro-cid-5grsw2hi> <a href="#which-should-i-use" data-astro-cid-5grsw2hi>Which should I use?</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

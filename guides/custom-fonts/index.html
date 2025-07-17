@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Using custom fonts</title><meta property="og:title" content="Using custom fonts"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Using custom fonts</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Custom fonts are a fun way to spice up your website.</p>
+<p>In order to use them, you need one of two things:</p>
+<ul>
+<li>The actual font file itself, uploaded onto your website or,</li>
+<li>A link to the font file that someone else is hosting</li>
+</ul>
+<p>There are tons of free fonts available on websites like <a href="https://www.dafont.com/" rel="noopener noreferrer" target="_blank">DaFont</a> or <a href="https://www.fontsquirrel.com/" rel="noopener noreferrer" target="_blank">Font Squirrel</a> that you can upload to your site.</p>
+<p>There’s also <a href="https://fonts.google.com/" rel="noopener noreferrer" target="_blank">Google Fonts</a> which can sometimes slow down the loading speed of your website. They are useful if you’d like instant and free web-fonts. The method for adding those is slightly different and not covered here.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Keep in mind that while most font files aren’t huge, they do take up more space on your webserver than your average HTML file.</p>
+</blockquote>
+<p>To add custom fonts to your website:</p>
+<ol>
+<li>Grab the font files you want to use. If it’s in a <code>.zip</code> or <code>.rar</code> file, you’ll need to extract it. The most common font file types are <code>.ttf</code> (TrueType), <code>.otf</code> (OpenType), <code>.woff</code> (Web Open Font Format) and <code>.woff2</code>, so those are the file extensions you’re looking for after unzipping the folder. Upload the font file(s) to your website.</li>
+<li>Then, in your stylesheet, add the following:</li>
+</ol>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">@font-face</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-family: </span><span style="color:#FFD493">"My font name"</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"/fonts/myfont.ttf"</span><span style="color:#EEF0F9">) format(</span><span style="color:#FFD493">"truetype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">  /* or: */</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"/fonts/myfont.otf"</span><span style="color:#EEF0F9">) format(</span><span style="color:#FFD493">"opentype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">  /* or */</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"/fonts/myfont.woff"</span><span style="color:#EEF0F9">) format(</span><span style="color:#FFD493">"woff"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">  /* or */</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"/fonts/myfont.woff2"</span><span style="color:#EEF0F9">) format(</span><span style="color:#FFD493">"woff2"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<ol start="3">
+<li>Change the <code>font-family</code> property to something that corresponds to that font. This name is going to be how you refer to the font when assigning it to elements.</li>
+<li>Change the <code>src</code> to the location of the font file.</li>
+</ol>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>If your font’s file name contains a space, replace the space with a dash <code>-</code> for better compatibility. While browsers can technically handle encoded spaces (<code>%20</code>), using clean file names avoids issues.</p>
+<p>Not sure how to link to the right font? Check out <a href="/guides/links">Using absolute and relative links</a>.</p>
+</blockquote>
+<ol start="5">
+<li>Change the <code>format</code> to match the file type of the font. <code>.ttf</code> files are <code>truetype</code> and <code>.otf</code> files are <code>opentype</code>. <code>.woff</code> and <code>.woff2</code> files are <code>woff</code> and <code>woff2</code> respectively.</li>
+</ol>
+<h2 id="custom-font-styles">Custom font styles</h2>
+<p>Some fonts provide individual files for each style (such as bold, italic, bold italic, etc.) In this case, if you want to use the associated font with its weight, you’ll need an <code>@font-face</code> rule for each style with special instructions.</p>
+<p>Here is an example which has separate files for the regular, bold, and bold-italic font styles:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">@font-face</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-family: Nunito;</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"https://sadhost.neocities.org/fonts/Nunito-Regular.ttf"</span><span style="color:#EEF0F9">)</span></span>
+<span class="line"><span style="color:#EEF0F9">    format(</span><span style="color:#FFD493">"truetype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#54B9FF">@font-face</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-family: Nunito;</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"https://sadhost.neocities.org/fonts/Nunito-Bold.ttf"</span><span style="color:#EEF0F9">)</span></span>
+<span class="line"><span style="color:#EEF0F9">    format(</span><span style="color:#FFD493">"truetype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-weight: </span><span style="color:#FFD493">bold</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#54B9FF">@font-face</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-family: Nunito;</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"https://sadhost.neocities.org/fonts/Nunito-Italic.ttf"</span><span style="color:#EEF0F9">)</span></span>
+<span class="line"><span style="color:#EEF0F9">    format(</span><span style="color:#FFD493">"truetype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-style: </span><span style="color:#FFD493">italic</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#54B9FF">@font-face</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-family: Nunito;</span></span>
+<span class="line"><span style="color:#EEF0F9">  src: url(</span><span style="color:#FFD493">"https://sadhost.neocities.org/fonts/Nunito-BoldItalic.ttf"</span><span style="color:#EEF0F9">)</span></span>
+<span class="line"><span style="color:#EEF0F9">    format(</span><span style="color:#FFD493">"truetype"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-style: </span><span style="color:#FFD493">italic</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  font-weight: </span><span style="color:#FFD493">bold</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>Notice how in the above example, all of the font-family properties have the same name. This is because we’re using all of the various styles (regular, italic, bold, bold italic) for the same font. Notice that the <code>src</code> value changes to the appropriate font file.</p>
+<p>To use this font, you only need to specify: <code>font-family: Nunito</code> and depending on the other styles (whether the font is italic, bold, etc.) it will show up correctly.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#custom-font-styles" data-astro-cid-5grsw2hi>Custom font styles</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

@@ -1,0 +1,43 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Using CSS variables</title><meta property="og:title" content="Using CSS variables"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Using CSS variables</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Using variables in CSS can help track certain property values we want to keep the same in multiple different areas. It’s especially useful for tracking colors, so we only need to reuse the variable instead of remembering the color code.</p>
+<p>We define CSS variables above the other styles, with <code>:root</code> at the top of our stylesheet.</p>
+<p>CSS variables can be named anything as long as they begin with <code>--</code>, do not start with a number, and do not contain spaces.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#EEF0F9">:root {</span></span>
+<span class="line"><span style="color:#4BF3C8">  --lavender</span><span style="color:#EEF0F9">: </span><span style="color:#FFD493">#bb81ea</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#4BF3C8">  --light-green</span><span style="color:#EEF0F9">: rgb(</span><span style="color:#FFD493">153</span><span style="color:#EEF0F9">, </span><span style="color:#FFD493">197</span><span style="color:#EEF0F9">, </span><span style="color:#FFD493">160</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>Once they are defined, we can use them where needed by using them inside of <code>var()</code>.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">strong</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  color: var(</span><span style="color:#4BF3C8">--lavender</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"><span style="color:#4BF3C8">.panel</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  background-color: var(</span><span style="color:#4BF3C8">--light-green</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>When we need to update a color on our page that is used in many places, we only need to update it in one place now.</p>
+<p>CSS variables can be used for more than just colors. They can store pretty much any value, but they cannot be used to store <code>@media</code> query widths.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#EEF0F9">:root {</span></span>
+<span class="line"><span style="color:#4BF3C8">  --border</span><span style="color:#EEF0F9">: </span><span style="color:#FFD493">1</span><span style="color:#4BF3C8">px</span><span style="color:#FFD493"> solid</span><span style="color:#FFD493"> #cccccc</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#4BF3C8">  --background</span><span style="color:#EEF0F9">: url(</span><span style="color:#FFD493">"image.jpg"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"></span>
+<span class="line"><span style="color:#4BF3C8">.container</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  border: var(</span><span style="color:#4BF3C8">--border</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">  background: var(</span><span style="color:#4BF3C8">--background</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi>  </aside> <footer class="footer"></footer> </div>  </body></html>

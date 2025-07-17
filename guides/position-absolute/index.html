@@ -1,0 +1,65 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Understanding position:absolute</title><meta property="og:title" content="Understanding position:absolute"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Understanding position:absolute</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Using <code>position:absolute;</code> allows us great flexibility with placing items on the page. Armed with the knowledge of how this works, you can effectively place anything anywhere on the screen.</p>
+<h2 id="about-positionabsolute">About position:absolute</h2>
+<p>When you assign an element <code>position:absolute;</code> you are removing this element from the “flow” of the page. This means the element ignores all of the other stuff on the page and goes exactly where you tell it to go.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>If you’re going for exact placement of elements, I highly recommend working in a CodePen or another environment where you can see your code update automatically as you write it. This will be a huge help in tweaking things to be exact.</p>
+</blockquote>
+<p>It can get a little unwieldy to do things this way, because the entire webpage is essentially your canvas. Here is an example. I have placed a cat emoji at the top of this page, with the following styles:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.cat</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  position: </span><span style="color:#FFD493">absolute</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  top: </span><span style="color:#FFD493">20</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  left: </span><span style="color:#FFD493">20</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<div style="position:absolute; top:20px; left:20px;">🐈</div>
+<p>This code tells the element to display 20 pixels from the top of the page and 20 pixels from the left of the page.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong>
+When using <code>top</code>, <code>right</code>, <code>left</code>, and <code>bottom</code>, the value <code>0</code> represents the very edge of the area. So <code>right: 0;</code> would be up against the right edge, while <code>bottom: 0;</code> would be right against the bottom edge.</p>
+</blockquote>
+<p>It’s not bad, but if I wanted it in a very specific position, I’d have to take the entire page into account when calculating the pixel values. Things can get messy, especially when you consider that viewports come in so many different sizes nowadays.</p>
+<p>Instead of using the entire page as your “canvas”, you can designate an outer element - like a div - as the canvas for your absolutely positioned items.</p>
+<p>In the example below, both the heart and the globe images are positioned absolutely at <code>top:10px;</code> and <code>right:10px;</code>. The difference is that the heart image is inside of a container with <code>position:relative;</code></p>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="ExbPmjO" data-pen-title="Position Anything Anywhere - 1.5 (Container)" data-user="sadness97" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/sadness97/pen/ExbPmjO">
+  Position Anything Anywhere - 1.5 (Container)</a> by Sadness (<a href="https://codepen.io/sadness97">@sadness97</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://public.codepenassets.com/embed/index.js"></script>
+<p>Once you are working inside of a relative element, the <code>top</code>, <code>left</code>, <code>bottom</code> and <code>right</code> values will be relative to that container.</p>
+<p>In the below example, I assigned classes to each image so I can use those to style them. If you’re just using this technique on one page, it may save you time to add the styles inline.</p>
+<p>Once you have all of your images on the page, you can start to assign each one position values (<code>top</code>, <code>left</code>, <code>right</code> and <code>bottom</code>). In my experience it’s usually easiest to keep things consistent by sticking to either top and left and right and bottom positioning. Mixing them all together might make things confusing.</p>
+<p>Here is an example of custom positioning of the images:</p>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="xxPZddN" data-pen-title="Position Anything Anywhere - 3 (Position Items)" data-user="sadness97" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/sadness97/pen/xxPZddN">
+  Position Anything Anywhere - 3 (Position Items)</a> by Sadness (<a href="https://codepen.io/sadness97">@sadness97</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://public.codepenassets.com/embed/index.js"></script>
+<h2 id="defying-boundaries">Defying boundaries</h2>
+<p>If you use a relatively positioned container, you can bring your items outside of the container - with negative margins.</p>
+<p>This can create some very cool effects, like graphics ‘sitting’ on top of certain elements.</p>
+<p class="codepen" data-height="300" data-default-tab="html,result" data-slug-hash="RwjrVJG" data-pen-title="Position Anything Anywhere - 4 (Defy Boundaries!!)" data-user="sadness97" style="height: 300px; box-sizing: border-box; display: flex; align-items: center; justify-content: center; border: 2px solid; margin: 1em 0; padding: 1em;">
+  <span>See the Pen <a href="https://codepen.io/sadness97/pen/RwjrVJG">
+  Position Anything Anywhere - 4 (Defy Boundaries!!)</a> by Sadness (<a href="https://codepen.io/sadness97">@sadness97</a>)
+  on <a href="https://codepen.io">CodePen</a>.</span>
+</p>
+<script async src="https://public.codepenassets.com/embed/index.js"></script> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#about-positionabsolute" data-astro-cid-5grsw2hi>About position:absolute</a>  </li><li data-astro-cid-5grsw2hi> <a href="#defying-boundaries" data-astro-cid-5grsw2hi>Defying boundaries</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

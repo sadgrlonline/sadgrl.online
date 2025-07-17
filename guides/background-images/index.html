@@ -1,0 +1,153 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Creating and styling background images</title><meta property="og:title" content="Creating and styling background images"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Creating and styling background images</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Background images are applied to elements via the CSS.</p>
+<p>We can set a background image to the <code>body</code> element like so:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">body</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  background-image: url(</span><span style="color:#FFD493">"image.jpg"</span><span style="color:#EEF0F9">);</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Not sure how to link to the right image? Check out <a href="/guides/links">Using absolute and relative links</a>.</p>
+</blockquote>
+<h2 id="repeat">Repeat</h2>
+<p>By default, setting a <code>background-image</code> alone will repeat the image upwards and downwards like a grid, if it’s small enough to be repeated.</p>
+<p>We can change how it repeats by adding one of the following values:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">background-image:url('image.jpg'</span><span style="color:#EEF0F9">); </span><span style="color:#EEF0F98F;font-style:italic">/* define the background image */</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">/* don't use all of these at once! */</span></span>
+<span class="line"><span style="color:#54B9FF">background-repeat:no-repeat;</span><span style="color:#EEF0F98F;font-style:italic"> /* stop repeat */</span></span>
+<span class="line"><span style="color:#54B9FF">background-repeat:repeat;</span><span style="color:#EEF0F98F;font-style:italic"> /* start repeat */</span></span>
+<span class="line"><span style="color:#54B9FF">background-repeat:repeat-y;</span><span style="color:#EEF0F98F;font-style:italic"> /* repeat up and down */</span></span>
+<span class="line"><span style="color:#54B9FF">background-repeat:repeat-x;</span><span style="color:#EEF0F98F;font-style:italic"> /* repeat left and right */</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>For example, I might want a divider image to only <code>repeat-x</code>. This means it repeats on the x-axis, or left and right.</p>
+ <div class="repeat-x">
+</div>
+<style>
+    .repeat-x {
+        background-image: url('https://sadhost.neocities.org/images/learn/divider-halloween.gif');
+        width: 100%;
+        height: 150px;
+        background-size: 25%;
+        background-repeat: repeat-x;
+    }
+</style>
+<h2 id="sizing">Sizing</h2>
+<p>For sizing background images, there are many options, but we’re only going to focus on a few. All of these methods use the <code>background-size</code> property.</p>
+<p>Because the background image is being applied to an element, it’s important to keep in mind that the size values we choose are going to be relevant to the element’s size.</p>
+<p>For demonstration, we’re going to use <a href="https://sadhost.neocities.org/images/learn/pumpkin-head.png" rel="noopener noreferrer" target="_blank">this image</a> which is quite large. It is being displayed in each of the below boxes with different values.</p>
+ <div class="backgroundSizes">
+    <div>
+        <div class="label">Unstyled</div>
+    </div>
+    <div>
+        <div class="label">
+            <span class="ic">background-size:50%;</span>
+        </div>
+    </div>
+    <div>
+        <div class="label">
+            <span class="ic">background-size:contain;</span>
+        </div>
+    </div>
+    <div>
+        <div class="label">
+            <span class="ic">background-size:cover;</span>
+        </div>
+    </div>
+</div>
+<style>
+    .backgroundSizes,
+    .backgroundAttachment {
+        display: flex;
+        flex-wrap: wrap;
+    }
+
+    .backgroundSizes>div {
+        border: 1px solid var(--white);
+        width: 50%;
+        height: 200px;
+        position: relative;
+        background-image: url('https://sadhost.neocities.org/images/learn/pumpkin-head.png');
+    }
+
+    .backgroundSizes>div:nth-of-type(2) {
+        background-size: 50%;
+    }
+
+    .backgroundSizes>div:nth-of-type(3) {
+        background-size: contain;
+    }
+
+    .backgroundSizes>div:nth-of-type(4) {
+        background-size: cover;
+    }
+
+    .label {
+        position: absolute;
+        bottom: 0;
+        background-color: var(--black);
+        width: 100%;
+        border: 1px solid var(--white);
+        text-align: center;
+        padding:5px;
+    }
+</style>
+<p>Note that <code>contain</code> fits the image height to the element, while <code>cover</code> fits the image width.</p>
+<h2 id="attachment">Attachment</h2>
+<p>The <code>background-attachment</code> property influences the behavior of the background image while a space is being scrolled. Again there are a couple different options here but we’ll only look at a couple. Scroll each of the following divs to see the behavior of the associated property.</p>
+<div class="backgroundAttachment">
+<div>
+    <p>Jump five feet high and sideways when a shadow moves please stop looking at your phone and pet me bird bird bird bird bird bird human why take bird out i could have eaten that. Adventure always small kitty warm kitty little balls of fur yet eat plants, meow, and throw up because i ate plants but meow meow be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day. Hopped up on catnip murf pratt ungow ungow always ensure to lay down in such a manner that tail can lightly brush human face at 5am until human fills food dish or eat fish on floor jump on human and sleep on her all night long be long in the bed</p>
+    <div class="label scroll"><span class="ic">Default (scroll)</span></div>
+</div>
+<div>
+    <p>Jump five feet high and sideways when a shadow moves please stop looking at your phone and pet me bird bird bird bird bird bird human why take bird out i could have eaten that. Adventure always small kitty warm kitty little balls of fur yet eat plants, meow, and throw up because i ate plants but meow meow be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day. Hopped up on catnip murf pratt ungow ungow always ensure to lay down in such a manner that tail can lightly brush human face at 5am until human fills food dish or eat fish on floor jump on human and sleep on her all night long be long in the bed</p>
+    <div class="label scroll"><span class="ic">background-attachment:local;</span></div>
+</div>
+</div>
+<style>
+    .backgroundAttachment {
+        display: flex;
+        flex-wrap: wrap;
+    }
+    .backgroundAttachment>div {
+        border: 1px solid var(--white);
+        width: 50%;
+        height: 200px;
+        position: relative;
+        background-image: url('https://sadhost.neocities.org/images/learn/pixel-graveyard.gif');
+        overflow: auto;
+    }
+    .backgroundAttachment>div:nth-of-type(2) {
+        background-attachment: local;
+    }
+    .backgroundAttachment>div>p {
+        background-color: var(--black);
+        margin: 40px;
+        padding: 10px;
+    }
+    .ic {
+        font-family:monospace;
+        color:var
+    }
+    .scroll {
+    position: sticky;
+    }
+</style>
+<p>It’s easy to be fooled into thinking <code>scroll</code> makes the background scroll with the page, when actually it’s <code>local</code>.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#repeat" data-astro-cid-5grsw2hi>Repeat</a>  </li><li data-astro-cid-5grsw2hi> <a href="#sizing" data-astro-cid-5grsw2hi>Sizing</a>  </li><li data-astro-cid-5grsw2hi> <a href="#attachment" data-astro-cid-5grsw2hi>Attachment</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

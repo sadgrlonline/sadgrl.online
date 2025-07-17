@@ -1,0 +1,32 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Create a page redirect</title><meta property="og:title" content="Create a page redirect"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Create a page redirect</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>A redirect is a piece of code which, upon visiting one page, takes you to a different page automatically.</p>
+<p>There are two main reasons you might want to set up a redirect:</p>
+<ul>
+<li>To redirect a page after changing the URL (so existing links to the old URL don’t break)</li>
+<li>To create an ‘easy’ link to an outside profile (like setting yourwebsite.com/spacehey to redirect to your SpaceHey profile)</li>
+</ul>
+<p>To implement a redirect, you need to place a snippet of code inside of your <code>&#x3C;head>&#x3C;/head></code> tags:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">meta</span><span style="color:#ACAFFF"> http-equiv</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"refresh"</span><span style="color:#ACAFFF"> content</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"0; url='/about/'"</span><span style="color:#EEF0F9"> /></span></span></code></pre>
+<p>If the above code were put into <code>/about.html</code>, then when users visit that page, they will be redirected to <code>https://yoursite.neocities.org/about/</code>.</p>
+<p>You can change the <code>content="0"</code> value to determine how long until the page redirects (in seconds). <code>0</code> indicates an immediate redirect.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>The <code>url=''</code> value can be an absolute or relative link.</p>
+</blockquote> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi>  </aside> <footer class="footer"></footer> </div>  </body></html>

@@ -1,0 +1,89 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Creating text columns</title><meta property="og:title" content="Creating text columns"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Creating text columns</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Creating nice, even columns of text with CSS is easy.</p>
+<div class="columns-demo demo">
+    <p>Scream for no reason at 4 am sweet beast, be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day and love you, then bite you love me! Hiss and stare at nothing then run suddenly away. Making sure that fluff gets into the owner's eyes intently stare at the same spot why can't i catch that stupid red dot kitty poochy.</p>
+</div>
+<style>
+.columns-demo {
+    columns: 2;
+}
+
+.columns-demo p {
+    margin-top: 0;
+}
+</style>
+<p>First, create an element of text:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"columns"</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">p</span><span style="color:#EEF0F9">>My text here...&#x3C;/</span><span style="color:#54B9FF">p</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>Then, you can apply the <code>columns</code> CSS property. You can adjust the number of columns as needed.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.columns</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  columns: </span><span style="color:#FFD493">2</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  padding: </span><span style="color:#FFD493">15</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">; </span><span style="color:#EEF0F98F;font-style:italic">/* adds padding between the text and the border */</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"><span style="color:#EEF0F98F;font-style:italic">/* this is extra */</span></span>
+<span class="line"><span style="color:#4BF3C8">.columns</span><span style="color:#54B9FF"> p</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  margin-top: </span><span style="color:#FFD493">0</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Since <code>&#x3C;p>&#x3C;/p></code> elements have a little bit of margin at the top, I added a rule to remove that so the columns would be even.</p>
+</blockquote>
+<p>You can adjust the space between your columns with <code>column-gap</code>:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.columns</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  columns: </span><span style="color:#FFD493">2</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  padding: </span><span style="color:#FFD493">15</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  column-gap: </span><span style="color:#FFD493">50</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+ <div class="columns-demo-2 demo">
+    <p>Scream for no reason at 4 am sweet beast, be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day and love you, then bite you love me! Hiss and stare at nothing then run suddenly away. Making sure that fluff gets into the owner's eyes intently stare at the same spot why can't i catch that stupid red dot kitty poochy.</p>
+</div>
+<style>
+.columns-demo-2 {
+    columns: 2;
+    column-gap: 40px;
+}
+.columns-demo-2 > p {
+    margin-top: 0;
+}
+</style>
+<p>You can also add a border or <code>rule</code> between your columns to visually separate them.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.columns</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  columns: </span><span style="color:#FFD493">2</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  padding: </span><span style="color:#FFD493">15</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  column-rule: </span><span style="color:#FFD493">1</span><span style="color:#4BF3C8">px</span><span style="color:#FFD493"> solid</span><span style="color:#FFD493"> gray</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+ <div class="columns-demo-3 demo">
+    <p>Scream for no reason at 4 am sweet beast, be a nyan cat, feel great about it, be annoying 24/7 poop rainbows in litter box all day and love you, then bite you love me! Hiss and stare at nothing then run suddenly away. Making sure that fluff gets into the owner's eyes intently stare at the same spot why can't i catch that stupid red dot kitty poochy.</p>
+</div>
+<style>
+.columns-demo-3 {
+    columns: 2;
+    column-rule: 1px solid gray;
+}
+
+.columns-demo-3>p {
+    margin-top: 0;
+}
+.demo {
+    border:1px dotted var(--white);
+    padding:15px;
+}
+</style> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi>  </aside> <footer class="footer"></footer> </div>  </body></html>

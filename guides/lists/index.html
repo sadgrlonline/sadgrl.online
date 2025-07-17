@@ -1,0 +1,120 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Creating and styling lists</title><meta property="og:title" content="Creating and styling lists"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Creating and styling lists</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>There are two main types of lists, ordered (numbered) and unordered (bulleted).</p>
+<p>Here is an ordered list:</p>
+<ol>
+<li>tuna</li>
+<li>salmon</li>
+<li>crab</li>
+<li>yellowtail</li>
+</ol>
+<p>We create this in HTML like so:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">ol</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>tuna&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>salmon&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>crab&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>yellowtail&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">ol</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>Here is an unordered list:</p>
+<ul>
+<li>tuna</li>
+<li>salmon</li>
+<li>crab</li>
+<li>yellowtail</li>
+</ul>
+<p>It is created like this:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>tuna&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>salmon&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>crab&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>yellowtail&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>We define the list with either <code>&#x3C;ul>&#x3C;/ul></code> or <code>&#x3C;ol>&#x3C;/ol></code> tags depending on the type of list we want. Then, each list item is represented by <code>&#x3C;li>&#x3C;/li></code>.</p>
+<h2 id="nesting-lists">Nesting lists</h2>
+<p>You can nest a list inside of another list to designate a sub-list.</p>
+<ul>
+<li>sushi
+<ul>
+<li>california roll</li>
+<li>spicy salmon roll</li>
+</ul>
+</li>
+<li>french fries
+<ul>
+<li>crinkle-cut</li>
+<li>curly</li>
+</ul>
+</li>
+</ul>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>sushi&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">    &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>california roll&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">    &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>spicy salmon roll&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;/</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>french fries&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">    &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>crinkle-cut&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">    &#x3C;</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">>curly&#x3C;/</span><span style="color:#54B9FF">li</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;/</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">ul</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>It’s possible to nest them in many different ways. You can put an ordered list
+inside of an unordered list, and vice versa.</p>
+<h2 id="styling-lists">Styling lists</h2>
+<p>You can customize lists pretty extensively with CSS.</p>
+<p>To display a list with no bullets, you must apply this property to the <code>ul</code> element:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">list-style: none;</span></span></code></pre>
+<p>You can also use CSS to set a custom emoji or symbol as the bullet.</p>
+<ul class="custom">
+    <li>tuna</li>
+    <li>salmon</li>
+    <li>crab</li>
+    <li>yellowtail</li>
+</ul>
+<style>
+    .custom {
+        list-style: "🌙 ";
+        margin-right: 5px;
+    }
+</style>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">list-style: "</span><span style="color:#EEF0F9">\1F319</span><span style="color:#54B9FF"> ";</span><span style="color:#EEF0F98F;font-style:italic"> /* unicode */</span></span>
+<span class="line"><span style="color:#54B9FF">list-style: "🌙 ";</span><span style="color:#EEF0F98F;font-style:italic"> /* directly pasted */</span></span></code></pre>
+<p>Both of the above examples have the same effect, but the first uses the unicode codepoint. This works because we’re using an emoji, and every emoji is defined in the Unicode Standard, which assigns a unique code to represent it. Using the unicode value with CSS is preferred due to how browsers handle the display of emojis.</p>
+<p>You can find a list of emojis and their respective unicode codepoints on <a href="https://emojipedia.org" rel="noopener noreferrer" target="_blank">emojipedia</a>. Once you’re viewing an emoji, select the <strong>Technical Information</strong> tab and look for the <strong>Codepoints</strong> value.</p>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>The Unicode codepoints you’ll find online will look like <code>U+1F319</code>. To translate that to a web-safe CSS value, you can replace the <code>U+</code> with a backslash <code>/</code> so <code>U+1F319</code> becomes <code>\1F319</code>.</p>
+</blockquote>
+<p>You can also use an image as bullet points if you’d like:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">list-style: url("image.jpg"</span><span style="color:#EEF0F9">);</span></span></code></pre>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Not sure how to link to an image? Check out <a href="/guides/links">Using absolute and relative links</a>.</p>
+</blockquote>
+<ul class="image">
+    <li>tuna</li>
+    <li>salmon</li>
+    <li>crab</li>
+    <li>yellowtail</li>
+</ul>
+ <style>
+.image {
+    list-style: url('https://sadhost.neocities.org/images/learn/blueheartbounce.gif');
+}
+</style> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#nesting-lists" data-astro-cid-5grsw2hi>Nesting lists</a>  </li><li data-astro-cid-5grsw2hi> <a href="#styling-lists" data-astro-cid-5grsw2hi>Styling lists</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

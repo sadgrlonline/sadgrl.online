@@ -1,0 +1,345 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Using flexbox</title><meta property="og:title" content="Using flexbox"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Using flexbox</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Flexbox is easily one of the most helpful bits of CSS I’ve ever learned. You can think of it as a tool to help you group divs together side-by-side.</p>
+<p>Here are two 25px divs, without flexbox:</p>
+<div class="demo">
+<div class="no-flex">
+    <div></div>
+    <div></div>
+</div>
+</div>
+<style>
+.no-flex {
+    width: 100%;
+}
+.no-flex>div {
+height: 100px;
+width: 100px;
+border: 1px solid var(--white);
+}
+</style>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"flex"</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"item"</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"item"</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span></code></pre>
+<p>In order to apply flexbox, we need to wrap both of those divs in another div. That “container” will be the element we apply flexbox to. Throughout this article, we will be applying styles to this container, not the flex items themselves.</p>
+<p>So let’s add our CSS to the container:</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.flex</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  display: </span><span style="color:#FFD493">flex</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+  <div class="demo">
+<div class="flex-d">
+    <div></div>
+    <div></div>
+</div>
+</div>
+<style>
+.flex-d {
+    display: flex;
+}
+.flex-d>div {
+    height: 100px;
+    width: 100px;
+    border: 1px solid var(--white);
+}
+</style>
+<p>Now our <code>div</code>s are side-by-side - this is the glory of flexbox!</p>
+<h2 id="flex-wrapping">Flex wrapping</h2>
+<p>If we have too many items and not enough space on the page, extra flex items will either run off of the page, or look very squished, like this:</p>
+<div class="demo">
+    <div class="flex-d">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>Whether your flex items run off of the page or become squished depends on whether your items are inside of a container with a fixed width. If there’s no fixed-width on the container, they will run off the page.</p>
+</blockquote>
+<p>We can fix this by setting our flex container to <code>wrap</code>. This tells the flex items to automatically
+“wrap” onto the next line if there isn’t enough space to fit.</p>
+ <div class="demo">
+    <div class="flex-d wrap">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<style>
+    .wrap {
+        flex-wrap: wrap;
+    }
+</style>
+<h2 id="flex-alignment">Flex alignment</h2>
+<p>In the above example, our divs have a static width and are further constrained by this page’s layout, there’s some space left over on the right.</p>
+<p>We can use <code>justify-content</code> on our flex container to determine how our flex items are spread out.</p>
+<p>For example, here’s <code>justify-content:space-between</code>:</p>
+ <div class="demo">
+    <div class="flex-d wrap" style="justify-content:space-between">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<p>As you can see, the squares on the top row are spaced differently from the squares on the bottom. This happens because <code>justify-content: space-between</code> distributes the available space between the flex items by calculating the total width of the items and spreading the remaining space evenly between them. There’s no space added before the first item or after the last - just between the items themselves - so the result depends on how many items fit in a single row.</p>
+<p>Here’s how <code>justify-content:center</code> looks with those same divs:</p>
+ <div class="demo">
+    <div class="flex-d wrap" style="justify-content:center">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+    </div>
+</div>
+<h2 id="flex-gap">Flex gap</h2>
+<p>You can add space between flex items with <code>row-gap</code>, <code>column-gap</code> or the shorthand <code>gap</code> (which applies to both rows and columns).</p>
+<p>The <code>gap</code> property refers to space between flexbox rows and columns.</p>
+<p>Let’s return to our earlier demo and add <code>gap: 10px;</code>so that our flex items can breathe. This adds <code>10px</code> of space between each row and column.</p>
+ <div class="demo">
+    <div class="flex-d wrap" style="gap:10px;">
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+        <div></div>
+         <div></div>
+        <div></div>
+    </div>
+</div>
+<p>Now you know enough to make a nice-looking image gallery!</p>
+<h2 id="flex-order">Flex order</h2>
+<p>Changing the flex order can come in handy when you’re designing mobile-friendly layouts.</p>
+<p>For example, take a look at the demo below. Click and drag the bottom right corner to resize the demo. As the screen space narrows, a <code>@media</code> query kicks in and the layout flexes. Since the sidebar comes first in the HTML, it displays on top and takes up a lot of space on small screens.</p>
+<div class="resizeMe">
+  <iframe style="width: 100%; height: 300px; border: none;" srcdoc="
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body {
+            margin: 0;
+            font-family: sans-serif;
+            height:100%;
+          }
+          .demo-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+          }
+          .demo-sidebar {
+            width: 100px;
+            height:300px;
+            background: #f0f0f0;
+          }
+          .demo-main {
+            flex: 1;
+            padding: 20px;
+            font-size: 10px;
+            color:white;
+          }
+           @media only screen and (max-width: 250px) {
+            .demo-container {
+              flex-wrap:wrap;
+            }
+            .demo-sidebar {
+              width:100%; 
+              height:130px;
+            }
+           }
+        </style>
+      </head>
+      <body>
+        <div class=&#x22;demo-container&#x22;>
+          <div class=&#x22;demo-sidebar&#x22;></div>
+          <div class=&#x22;demo-main&#x22;>
+            <p>This is a layout demo inside an iframe.</p>
+          </div>
+        </div>
+      </body>
+      </html>"></iframe>
+</div>
+<style>
+  .resizeMe {
+    resize: horizontal;
+    overflow: auto;
+    width: 400px;
+    max-width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+  }
+
+  .resizeMe > iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+<p>With flexbox, you can change the order in which flex items appear.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.sidebar</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  order: </span><span style="color:#FFD493">2</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"><span style="color:#4BF3C8">.content</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  order: </span><span style="color:#FFD493">1</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>Try resizing this new version, which uses <code>order</code>.</p>
+<div class="resizeMe">
+  <iframe style="width: 100%; height: 300px; border: none;" srcdoc="
+      <!DOCTYPE html>
+      <html>
+      <head>
+        <style>
+          body {
+            margin: 0;
+            font-family: sans-serif;
+            height:100%;
+          }
+          .demo-container {
+            display: flex;
+            width: 100%;
+            height: 100%;
+          }
+          .demo-sidebar {
+            width: 100px;
+            height:300px;
+            background: #f0f0f0;
+          }
+          .demo-main {
+            flex: 1;
+            padding: 20px;
+            font-size: 10px;
+            color:white;
+            height:150px;
+          }
+           @media only screen and (max-width: 250px) {
+            .demo-container {
+              flex-wrap:wrap;
+              order:1;
+            }
+            .demo-sidebar {
+              width:100%; 
+              height:130px;
+              order:2;
+            }
+           }
+        </style>
+      </head>
+      <body>
+        <div class=&#x22;demo-container&#x22;>
+          <div class=&#x22;demo-sidebar&#x22;></div>
+          <div class=&#x22;demo-main&#x22;>
+            <p>This is a layout demo inside an iframe.</p>
+          </div>
+        </div>
+      </body>
+      </html>"></iframe>
+</div>
+<style>
+  .resizeMe {
+    resize: horizontal;
+    overflow: auto;
+    width: 400px;
+    max-width: 100%;
+    height: 300px;
+    border: 1px solid #ccc;
+  }
+
+  .resizeMe > iframe {
+    width: 100%;
+    height: 100%;
+    display: block;
+  }
+</style>
+<p>Now the sidebar appears on the bottom of the content when resized. Look at that flexibility!</p>
+<h2 id="flex-stretch">Flex stretch</h2>
+<p>Sometimes you might want a div to fill the remaining horizontal space. This is one of those rare cases where you apply the property to the flex item itself instead of its container/parent.</p>
+<p>The below div has no width set, yet it stretches to fill the entire width with <code>flex-grow:1;</code></p>
+<div class="demo" style="display:flex">
+    <div class="stretch-w"></div>
+</div>
+<style>
+    .stretch-w {
+        border: 1px solid var(--accent-green);
+        height: 50px;
+        flex-grow: 1;
+        background-color: var(--accent-purple);
+    }
+</style>
+<p>By default, flex containers are set to <code>flex-direction:row;</code> which means its flex items “flow” in a horizontal row.</p>
+<p>If you were to set <code>flex-direction:column;</code> on the parent then <code>flex-grow:1;</code> would fill the entire height.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="html"><code><span class="line"><span style="color:#EEF0F9">&#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"flex-parent"</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">  &#x3C;</span><span style="color:#54B9FF">div</span><span style="color:#ACAFFF"> class</span><span style="color:#EEF0F9">=</span><span style="color:#4BF3C8">"flex-child"</span><span style="color:#EEF0F9">>&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span>
+<span class="line"><span style="color:#EEF0F9">&#x3C;/</span><span style="color:#54B9FF">div</span><span style="color:#EEF0F9">></span></span></code></pre>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#4BF3C8">.flex-parent</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  flex-direction: </span><span style="color:#FFD493">column</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span>
+<span class="line"><span style="color:#4BF3C8">.flex-child</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  flex-grow: </span><span style="color:#FFD493">1</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<div class="demo stretch-demo" style="display:flex; height:400px;">
+    <div class="stretch-h"></div>
+</div>
+<style>
+    .stretch-demo {
+        flex-direction:column;
+    }
+    .stretch-h {
+        border: 1px solid var(--accent-green);
+        width: 100px;
+        flex-grow: 1;
+        background-color: var(--accent-purple);
+    }
+</style>
+<h2 id="learn-more">Learn more</h2>
+<ul>
+<li><a href="https://css-tricks.com/snippets/css/a-guide-to-flexbox/" rel="noopener noreferrer" target="_blank">CSS Flexbox Layout Guide</a> by CSS Tricks provides a much more comprehensive overview of Flexbox.</li>
+<li><a href="https://flexboxfroggy.com/" rel="noopener noreferrer" target="_blank">Flexbox Froggy</a> is a game you can play in your browser to practice flexbox.</li>
+</ul> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#flex-wrapping" data-astro-cid-5grsw2hi>Flex wrapping</a>  </li><li data-astro-cid-5grsw2hi> <a href="#flex-alignment" data-astro-cid-5grsw2hi>Flex alignment</a>  </li><li data-astro-cid-5grsw2hi> <a href="#flex-gap" data-astro-cid-5grsw2hi>Flex gap</a>  </li><li data-astro-cid-5grsw2hi> <a href="#flex-order" data-astro-cid-5grsw2hi>Flex order</a>  </li><li data-astro-cid-5grsw2hi> <a href="#flex-stretch" data-astro-cid-5grsw2hi>Flex stretch</a>  </li><li data-astro-cid-5grsw2hi> <a href="#learn-more" data-astro-cid-5grsw2hi>Learn more</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

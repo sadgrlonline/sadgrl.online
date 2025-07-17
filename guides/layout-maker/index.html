@@ -1,0 +1,81 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Understanding and tweaking my layout maker</title><meta property="og:title" content="Understanding and tweaking my layout maker"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Understanding and tweaking my layout maker</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Many people who find and use my <a href="https://codepen.io/sadness97/full/XJbLxNj" rel="noopener noreferrer" target="_blank">layout builder tool</a> like to build upon the base layout, which is exactly what I like to see!</p>
+<p>This post is intended to explain the basic structure and show various examples of how you can change it up.</p>
+<p>As I continue to get questions, I will hopefully have the time to continue to update this post with specific solutions to specific problems.</p>
+<h2 id="html-visualization">HTML visualization</h2>
+<p><img src="https://sadhost.neocities.org/images/learn/layout-maker-graphic.png" alt="A screenshot of sadgrl&#x27;s layout maker with the different components outlined in colors"></p>
+<p>The basic structure which makes up any website is HTML. I want to focus on how the different pieces are put together because I feel like understanding this really opens up a lot of possibilities in terms of customization.</p>
+<p>This layout uses a variety of divs to construct what you see above. The “main” divs are outlined in colors. Each “layer” of divs has a different color.</p>
+<p>The below sections pertain to this image, so feel free to open it in a new window to view it along with the text.</p>
+<h3 id="the-body">The body</h3>
+<p>The outermost box (outlined in red) is our body.</p>
+<p>If we do not have <code>&#x3C;body>&#x3C;/body></code> tags on our page and you use the code provided by the maker, you might not see this area or it’ll be blank. That’s because it doesn’t exist – and you can fix it by adding a <code>&#x3C;body></code> tag right under your <code>&#x3C;/head></code> tag, and a closing <code>&#x3C;/body></code> tag at the end of your page, before <code>&#x3C;/html></code>. (On CodePen, Pens automatically have a body, which is why it works there even without these tags.)</p>
+<h3 id="the-container">The container</h3>
+<p>The container is outlined in yellow in the graphic.</p>
+<p>Don’t let the word ‘container’ throw you off. It doesn’t really mean anything officially, it’s just something to call a div that <em>contains</em> other divs. Since this is the main div inside of our body that holds our header, nav, etc. I have dubbed it with the ID of “container”.</p>
+<p>Inside of the container is… pretty much the entire layout! But directly inside of the container is three divs I outlined in blue. Some of these containers have other things inside of them – outlined in pink. Layouts are just divs organized in a certain order, like building blocks kind of.</p>
+<h3 id="the-main-divs">The main divs</h3>
+<p>Outlined in blue are three divs, three sections. From top to bottom: <code>#headerArea</code>, <code>#flex</code>, and <code>#footer</code>.</p>
+<ul>
+<li><code>#headerArea</code> - This is a box which contains the items outlined in pink: your #header div and your <code>#navbar</code> element. (If you selected the <code>#topBar</code> option in the maker, this is in there there as well).</li>
+<li><code>#flex</code> - This div is where we apply the flex style to, which allows us to have two or more divs side-by-side (our content and sidebars). Inside of here is your <code>#leftSidebar</code>, <code>#main</code> content area and <code>#rightSidebar</code>.</li>
+<li><code>#footer</code> - This one’s pretty basic, and it’s your footer. Nothing much to see here, no other divs inside of it (but you can create some if you’d like!)</li>
+</ul>
+<h2 id="layout-width">Layout width</h2>
+<p>Being able to visualize the basic structure of the layout allows us to understand something important about the width.</p>
+<p>All of the boxes inside of <code>#container</code> are constrained TO the container’s width. If the CSS for the container did not include a width, it would fill the full area of the screen.</p>
+<p>I can demonstrate this in two ways.</p>
+<p>First, in this example I completely removed the <code>#container</code> div.</p>
+<p>Be careful when you do this. Each opening HTML tag has its own closing tag. Sometimes it’s easy to get lost in a sea of <code>&#x3C;/div></code> tags, not knowing which belongs to which.</p>
+<p>Most code editors (including on Neocities) have little triangles among the line numbers on the left. You can collapse a complete tag if it can find the start and the end tag. This can be useful for finding the location of a particular end tag if you aren’t sure.</p>
+<p>Here’s a screenshot of how it looks with no container to constrain the width:</p>
+<p><img src="https://sadhost.neocities.org/images/learn/no-container-1536x820.png" alt="A screenshot of the base layout with no container"></p>
+<p>As a result of having nothing to contain it, the layout stretches to fill the entire body. This isn’t really considered ideal, since it will look strange to people on larger monitors.</p>
+<p><a href="https://codepen.io/sadness97/pen/jOzprpr" rel="noopener noreferrer" target="_blank">You can play with a live CodePen of the no container layout here</a>.</p>
+<p>Alternately… you can take some things out of the container if you want them to be the only things that stretch. In this example, I took the entire <code>#headerArea</code> div (and everything inside of it) and moved it outside of the container.</p>
+<p><img src="https://sadhost.neocities.org/images/learn/wide-header-area.png" alt="A screenshot of the base layout with a wide header"></p>
+<p><a href="https://codepen.io/sadness97/pen/PoRBzeM" rel="noopener noreferrer" target="_blank">You can play with a live CodePen of the wide header layout here</a></p>
+<h2 id="remaining-responsive">Remaining responsive</h2>
+<p>In order for the layout to remain responsive on mobile, it’s important to know how to adjust the container size and the media query. The media query is dependent on the container size. Even if you’ve never seen a media query in your life, hopefully my instructions can guide you through.</p>
+<p>Currently in my demo, the max-width of the container is 900px.</p>
+<p>Let’s say I wanted to increase that to 1100px because I want it to look wider.</p>
+<ol>
+<li>Go into the CSS and find the <code>#container</code> element and change <code>max-width</code> to <code>1100px;</code></li>
+<li>Scroll down to the very bottom where you see the media query begin.</li>
+<li>Subtract 100 from your <code>max-width</code> (1000).</li>
+<li>Change the <code>max-width</code> for <code>#container</code> to this new number.</li>
+</ol>
+<p>I tested it with a couple different widths, and this should work! If you forget to change the media query, it will just look a little funky on mobile.</p>
+<p><a href="https://codepen.io/sadness97/pen/ExEpgye?editors=1010" rel="noopener noreferrer" target="_blank">You can play with a live CodePen of this adjusted width layout here</a></p>
+<h2 id="adding-scrollbars-to-areas">Adding scrollbars to areas</h2>
+<p>An element with a <code>height</code> and <code>overflow:auto</code> will display a scrollbar if there’s enough text inside.</p>
+<p>On the layout maker, the height of the sidebars aren’t fixed. They will grow as long as the stuff you put inside of it. You can “fix” them by applying a height value.</p>
+<p>In order for things to look right, your main content area will need to share the same height as the sidebars. If you know advanced CSS you could probably work something else out but imo, it’s not worth the stress.</p>
+<p>By default, both of the sidebars are styled with the aside selector.</p>
+<p>To clarify, the below code (height may vary) should be applied to aside and #main.</p>
+<pre class="astro-code houston" style="background-color:#17191e;color:#eef0f9; overflow-x: auto;" tabindex="0" data-language="css"><code><span class="line"><span style="color:#54B9FF">aside</span><span style="color:#EEF0F9">,</span></span>
+<span class="line"><span style="color:#00DAEF">#main</span><span style="color:#EEF0F9"> {</span></span>
+<span class="line"><span style="color:#EEF0F9">  height: </span><span style="color:#FFD493">600</span><span style="color:#4BF3C8">px</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">  overflow: </span><span style="color:#FFD493">auto</span><span style="color:#EEF0F9">;</span></span>
+<span class="line"><span style="color:#EEF0F9">}</span></span></code></pre>
+<p>After adding that code, here is how the layout looks:</p>
+<p><img src="https://sadhost.neocities.org/images/learn/with-scrollbars.png" alt="A screenshot of the base layout with scrolling sidebars"></p>
+<p><a href="https://codepen.io/sadness97/pen/WNzKGMZ?editors=1010" rel="noopener noreferrer" target="_blank">You can play with a live CodePen of the layout with scrolling sidebars here</a></p>
+<p>Hopefully that gives you a little extra information you can use to customize your layout to your liking.</p> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/html" data-astro-cid-5grsw2hi>html</a> </p><p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/css" data-astro-cid-5grsw2hi>css</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#html-visualization" data-astro-cid-5grsw2hi>HTML visualization</a> <ul data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#the-body" data-astro-cid-5grsw2hi>The body</a>  </li><li data-astro-cid-5grsw2hi> <a href="#the-container" data-astro-cid-5grsw2hi>The container</a>  </li><li data-astro-cid-5grsw2hi> <a href="#the-main-divs" data-astro-cid-5grsw2hi>The main divs</a>  </li> </ul> </li><li data-astro-cid-5grsw2hi> <a href="#layout-width" data-astro-cid-5grsw2hi>Layout width</a>  </li><li data-astro-cid-5grsw2hi> <a href="#remaining-responsive" data-astro-cid-5grsw2hi>Remaining responsive</a>  </li><li data-astro-cid-5grsw2hi> <a href="#adding-scrollbars-to-areas" data-astro-cid-5grsw2hi>Adding scrollbars to areas</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>

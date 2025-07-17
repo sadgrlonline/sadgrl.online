@@ -1,0 +1,74 @@
+<!DOCTYPE html><html lang="en"> <head><meta charset="UTF-8"><meta name="viewport" content="width=device-width, initial-scale=1.0"><meta name="generator" content="Astro"><title>Create a backup of your Neocities website</title><meta property="og:title" content="Create a backup of your Neocities website"><link rel="stylesheet" href="/styles/global.css"><script type="module">document.addEventListener("DOMContentLoaded",function(){const e=document.getElementById("menu-toggle"),n=document.querySelector(".container");e.addEventListener("click",function(){n.classList.toggle("sidebar-open")})});</script><script src="//gc.zgo.at/count.js" data-goatcounter="https://sadgrl.goatcounter.com/count" async></script><style>.article p a{color:var(--accent-purple)}blockquote:has(strong){border-left:5px solid var(--accent-purple);background-color:#1a1a1a;padding:.5em;margin-left:0}blockquote:has(strong) p{margin:5px;color:var(--white);font-size:smaller}.demo{border:1px dotted var(--white);padding:15px}ol+p>img{padding-left:40px}#backToTop[data-astro-cid-5grsw2hi]{position:fixed;bottom:30px;right:30px;padding:10px 15px;font-size:1rem;font-family:sans-serif;background-color:var(--black);color:var(--accent-green);border:2px solid var(--accent-purple);border-radius:8px;cursor:pointer;opacity:0;visibility:hidden;transition:opacity .4s ease,visibility .4s ease;z-index:1001}#backToTop[data-astro-cid-5grsw2hi].show{opacity:1;visibility:visible}#backToTop[data-astro-cid-5grsw2hi]:hover{background-color:var(--accent-green);color:#000}#backToTop[data-astro-cid-5grsw2hi]:focus{outline:2px solid var(--accent-purple);outline-offset:3px}#backToTop[data-astro-cid-5grsw2hi].bottom-left{right:auto;left:30px}
+</style></head> <body> <div class="container withMetadata"> <header class="header"> <button id="menu-toggle" aria-label="Toggle Sidebar">☰</button> <span class="site-name"><a href="/"><img src="/_astro/logo.C3AjZVvt_2gISNf.webp" loading="eager" alt="sadgrl.online logo" style="height: auto; width: auto; max-width: 500px;" decoding="async" fetchpriority="auto" width="450" height="138"></a></span> </header> <aside class="sidebar"> <nav> <ul> <li><a href="/">Home</a></li> <li><a href="/writing/">Writing</a></li> <li> <a href="/links/">Links</a> </li><li><a href="/about">About</a></li> <li><a href="/guides/">Guides</a></li> <li><a href="/resources/">Resources</a></li> </ul> </nav> </aside> <main class="main-content">  <h1 data-astro-cid-5grsw2hi>Create a backup of your Neocities website</h1>  <div class="article" data-astro-cid-5grsw2hi> <p>Neocities allows you to download your entire site if your site is under a particular size (possibly 500MB?)</p>
+<p>This option can be found at the bottom of your file dashboard. The link is called <strong>Download entire site</strong>.</p>
+<p>If you are missing this option, it’s possible your website is too large, but there are other options you can try to get a complete backup of your site.</p>
+<h2 id="a-note-about-free-accounts">A note about free accounts</h2>
+<p>Some tools like Cyberduck and Rclone may not work with free Neocities accounts, but you are encouraged to try them anyway.</p>
+<p>You can also try using the free software <a href="https://www.httrack.com/" rel="noopener noreferrer" target="_blank">HTTrack</a> to download a local copy of your website. This software is available for most operating systems.</p>
+<h2 id="using-cyberduck-on-windows-or-mac">Using Cyberduck on Windows or Mac</h2>
+<p>Cyberduck is available on Windows and Mac. For Linux users, I recommend Rclone.</p>
+<h3 id="connecting-your-account">Connecting your account</h3>
+<ol>
+<li>Download and install the latest version of <a href="https://cyberduck.io/" rel="noopener noreferrer" target="_blank">Cyberduck</a> (for Windows and Mac only)</li>
+<li>Open Cyberduck and select <strong>Open Connection</strong> at the top.</li>
+<li>Paste this into the <strong>Server</strong> field: <a href="https://neocities.org/webdav" rel="noopener noreferrer" target="_blank">https://neocities.org/webdav</a></li>
+<li>Enter your Neocities username and password when prompted, then select <strong>Connect</strong>.</li>
+</ol>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>If you have more than one Neocities account on the same account, log in with the username of the account you’d like to back up and your usual password.</p>
+</blockquote>
+<p>If everything worked correctly, you should see Cyberduck populate with a listing of your website files.</p>
+<h3 id="downloading-the-files">Downloading the files</h3>
+<ol>
+<li>Select all of the files you wish to download</li>
+<li>While selected, right-click and choose <strong>Download To…</strong>, choose a folder on your PC as a destination and select <strong>OK</strong>.</li>
+<li>The <strong>Transfers</strong> window will pop up, but it’s easy to “lose”. You can locate it by clicking on the Cyberduck icon in your taskbar. When your download is complete, this window will say <strong>Download complete</strong>.</li>
+</ol>
+<h2 id="using-rclone-on-linux">Using Rclone on Linux</h2>
+<p><a href="https://rclone.org/" rel="noopener noreferrer" target="_blank">Rclone</a> is available on most operating systems, but this implementation is specifically for using <a href="https://kapitainsky.github.io/RcloneBrowser/" rel="noopener noreferrer" target="_blank">RcloneBrowser</a> on Linux. That said, it should follow the same steps.</p>
+<ol>
+<li>Download and install <a href="https://kapitainsky.github.io/RcloneBrowser/" rel="noopener noreferrer" target="_blank">RcloneBrowser</a>.</li>
+<li>Open the software and select the <strong>Config…</strong> button at the bottom. A terminal window will pop up.</li>
+<li>Enter <code>n</code> for New remote</li>
+<li>Enter a nickname for the site you are connecting to.</li>
+<li>Enter the number for <code>Webdav</code> as it appears in the list onscreen.</li>
+<li>Enter <a href="https://neocities.org/webdav" rel="noopener noreferrer" target="_blank">https://neocities.org/webdav</a> as the host URL</li>
+<li>Enter the number representing the Other option onscreen.</li>
+<li>Enter your Neocities username when prompted for the user name.</li>
+<li>Enter <code>y</code> to input your password, and confirm when prompted.</li>
+<li>Press <code>enter</code> when it prompts for the <code>bearer_token</code> (although it’s possible to authenticate with an API key here)</li>
+<li>Enter <code>n</code> when prompted for the advanced config.</li>
+<li>Enter <code>y</code> to confirm your changes.</li>
+<li>Enter <code>q</code> to quit config.</li>
+</ol>
+<blockquote>
+<p>✏️ <strong>Tip</strong></p>
+<p>These are a lot of steps all at once, and if you enter one item incorrectly, there’s no easy way to undo other than to finish and edit the prompts afterward by stepping through them again. That said, it’s easy to delete a config and create a new one so no worries about messing up.</p>
+</blockquote>
+<ol start="14">
+<li>On the <strong>Remotes</strong> tab you should now see your website, identified by the nickname you assigned it during configuration. Double-click on it to load your site. If everything worked correctly, you should see a listing of the files on your website populate.</li>
+<li>To select all items, select the icon at the top of the tree, then select <strong>Download</strong> from the top of the toolbar.</li>
+<li>Select the folder icon beside the Destination field to choose a location for the files.</li>
+<li>Ensure the <strong>Mode</strong> is toggled to <strong>Copy</strong>. Choosing <strong>Move</strong> will remove the files from Neocities.</li>
+</ol>
+<blockquote>
+<p>The Sync mode can be used to sync a local copy with the version on Neocities, which can make updating your site a little easier.</p>
+</blockquote> </div>   <script>
+    document.addEventListener("DOMContentLoaded", () => {
+      const backToTop = document.getElementById("backToTop");
+      const scrollOffset = 300;
+
+      window.addEventListener("scroll", () => {
+        if (window.scrollY > scrollOffset) {
+          backToTop.classList.add("show");
+        } else {
+          backToTop.classList.remove("show");
+        }
+      });
+
+      backToTop.addEventListener("click", () => {
+        window.scrollTo({ top: 0, behavior: "smooth" });
+      });
+    });
+  </script>  </main> <aside class="metadata"> <div class="topics section even" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi><strong data-astro-cid-5grsw2hi>Topics</strong></p> </div> <div class="tags" data-astro-cid-5grsw2hi> <p class="tag" data-astro-cid-5grsw2hi> <a href="/posts/tags/neocities" data-astro-cid-5grsw2hi>neocities</a> </p> </div> </div> <hr data-astro-cid-5grsw2hi> <div class="toc section odd" data-astro-cid-5grsw2hi> <div class="title" data-astro-cid-5grsw2hi> <p data-astro-cid-5grsw2hi> <strong data-astro-cid-5grsw2hi>Table of Contents</strong> </p> </div> <ul class="toc" data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#a-note-about-free-accounts" data-astro-cid-5grsw2hi>A note about free accounts</a>  </li><li data-astro-cid-5grsw2hi> <a href="#using-cyberduck-on-windows-or-mac" data-astro-cid-5grsw2hi>Using Cyberduck on Windows or Mac</a> <ul data-astro-cid-5grsw2hi> <li data-astro-cid-5grsw2hi> <a href="#connecting-your-account" data-astro-cid-5grsw2hi>Connecting your account</a>  </li><li data-astro-cid-5grsw2hi> <a href="#downloading-the-files" data-astro-cid-5grsw2hi>Downloading the files</a>  </li> </ul> </li><li data-astro-cid-5grsw2hi> <a href="#using-rclone-on-linux" data-astro-cid-5grsw2hi>Using Rclone on Linux</a>  </li> </ul> </div> </aside> <footer class="footer"></footer> </div>  </body></html>
