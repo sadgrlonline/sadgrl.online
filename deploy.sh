@@ -1,8 +1,5 @@
 #!/bin/bash
 
-# Load your API key from ~/.neocities.env if needed
-source ~/.neocities.env
-
 echo "🔧 Building Astro site..."
 npm run build || {
   echo "❌ Build failed. Exiting."
