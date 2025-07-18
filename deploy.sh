@@ -1,19 +1,36 @@
 #!/bin/bash
 
+# Load your API key from ~/.neocities.env if needed
+source ~/.neocities.env
+
 echo "🔧 Building Astro site..."
-npm run build || exit 1
+npm run build || {
+  echo "❌ Build failed. Exiting."
+  exit 1
+}
 
-echo "🚚 Copying files to dist-deploy..."
-rm -rf ../dist-deploy/*
-cp -r dist/* ../dist-deploy/
-cp -r dist/.* ../dist-deploy/ 2>/dev/null || true
+echo "🧹 Cleaning dist-deploy folder..."
+cd ../dist-deploy || {
+  echo "❌ Could not find dist-deploy folder. Exiting."
+  exit 1
+}
 
-cd ../dist-deploy
+# Remove all files (Git-tracked and untracked)
+git rm -rf . > /dev/null 2>&1 || true
+git clean -fdx
+
+echo "🚚 Copying files from Astro build (dist/)..."
+rsync -av ../sadgrl.online/dist/ ./
 
 echo "📦 Committing and pushing to dist branch..."
 git add .
 git commit -m "Deploy from source commit $(git --git-dir=../sadgrl.online/.git rev-parse --short HEAD)"
 git push origin dist
 
-cd ../sadgrl.online
+echo "🌐 Uploading to Neocities..."
+neocities push .
+
 echo "✅ Deploy complete!"
+
+# Return to main project folder
+cd ../sadgrl.online
